@@ -38,6 +38,9 @@ scripts/
 
 ## Deploy
 
+Live at https://frontend-openings.vercel.app (Vercel project `frontend-openings`).
+
 ```bash
-npm run deploy   # build with the repo sub-path and push dist/ to the gh-pages branch
+npm run deploy:vercel  # deploy to Vercel production
+npm run deploy         # GitHub Pages copy: build with the repo sub-path and push dist/ to gh-pages
 ```
