@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/schibsted-grotesk/wght.css';
+
+@theme {
+  --font-sans: 'Schibsted Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-email: var(--email);
+  --color-email-soft: var(--email-soft);
+  --color-website: var(--website);
+  --color-website-soft: var(--website-soft);
+  --color-form: var(--form);
+  --color-form-soft: var(--form-soft);
+  --color-on-route: var(--on-route);
+  --color-notice: var(--notice);
+  --color-notice-soft: var(--notice-soft);
+}
+
+/*
+  Palette: pale sage paper with ink-green text. The only saturated colors are the three ways an
+  application can travel (postal red for email, cobalt for a careers site, ochre for a form), and
+  they mean the same thing in the hero bar, the filters, and every apply button.
+*/
+:root {
+  color-scheme: light;
+  --paper: #eef1ec;
+  --surface: #fbfcfa;
+  --sunken: #e3e8e1;
+  --ink: #17251f;
+  --muted: #4c5b54;
+  --faint: #6a7871;
+  --line: #d3dbd3;
+  --line-strong: #b4c0b6;
+  --email: #a8362a;
+  --email-soft: #f6e4e0;
+  --website: #2346a8;
+  --website-soft: #e2e8f8;
+  --form: #855c00;
+  --form-soft: #f5ecd6;
+  --on-route: #ffffff;
+  --notice: #7a4f00;
+  --notice-soft: #f7efd9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #111a16;
+    --surface: #17221d;
+    --sunken: #0c1310;
+    --ink: #e5ebe6;
+    --muted: #a6b4ac;
+    --faint: #85948b;
+    --line: #26342d;
+    --line-strong: #3a4b42;
+    --email: #f0907f;
+    --email-soft: #3a1d18;
+    --website: #95acf6;
+    --website-soft: #1b2546;
+    --form: #e6bb5f;
+    --form-soft: #33280f;
+    --on-route: #111a16;
+    --notice: #edc574;
+    --notice-soft: #2f2610;
+  }
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* The one orchestrated moment: the hero bar grows into its proportions on load. */
+@keyframes route-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.route-bar > * {
+  transform-origin: left;
+  animation: route-grow 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.route-bar > :nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.route-bar > :nth-child(3) {
+  animation-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
